@@ -1,0 +1,44 @@
+1. one_to_many_assignment=# SELECT title FROM articles WHERE author_id = (SELECT id FROM authors WHERE name = 'Kara Melton');
+
+"How Tech Business Models Come From Marginalized Communities, But Startups Are Still Mostly White"
+"Confronting the Assumption of Whiteness in Virtual Spaces"
+
+2.one_to_many_assignment=# SELECT * FROM cities WHERE province_id = (SELECT id FROM provinces WHERE name = 'Ontario');
+
+   8 | Toronto |        1793 |          14
+ 11 | Ottawa  |        1826 |          14
+
+3. one_to_many_assignment=# SELECT name FROM authors WHERE id = (SELECT author_id FROM articles WHERE title = 'Coding Bootcamps and Emotional Labor');
+
+ Tilde Ann Thurium
+
+ 4.one_to_many_assignment=# SELECT COUNT (*) FROM provinces;
+
+   14
+
+5.one_to_many_assignment=# SELECT * FROM persons WHERE residence_id = (SELECT id FROM residences WHERE address = '4740 McDermott Street');
+
+16 | Malvina King |  28 |            9
+17 | Theo Wolff   |  27 |            9
+
+6. one_to_many_assignment=# SELECT name FROM cities WHERE id = (SELECT city_id FROM residences WHERE address ='4740 McDermott Street');
+
+Ottawa
+
+7.one_to_many_assignment=# SELECT name FROM provinces WHERE id = (SELECT province_id FROM cities WHERE id = (SELECT city_id FROM residences WHERE address ='4740 McDermott Street'));
+
+Ontario
+
+8.one_to_many_assignment=# SELECT name FROM countries WHERE id =(SELECT country_id FROM provinces WHERE id = (SELECT province_id FROM cities WHERE id = (SELECT city_id FROM residences WHERE address ='4740 McDermott Street')));
+name
+
+ Canada
+
+ 9.one_to_many_assignment=# SELECT name FROM countries WHERE id =(SELECT country_id FROM provinces WHERE id =(Select province_id FROM cities WHERE id = (SELECT city_id FROM residences WHERE id = (SELECT residence_id FROM persons WHERE name = 'Destini Davis'))));
+  name
+
+Canada
+
+10.one_to_many_assignment=# SELECT COUNT (*) FROM articles WHERE author_id = (SELECT id FROM authors WHERE name ='Aditya Mukerjee');
+
+1
